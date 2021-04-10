@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Task</title>
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        background-color: #4caf50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+
+      div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+      .custom-select-wrapper {
+        /* position: relative; */
+        user-select: none;
+        width: 100%;
+      }
+      .custom-select {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        /* border-width: 0 2px 0 2px; */
+        /* border-style: solid; */
+        /* border-color: #394a6d; */
+      }
+      .custom-select__trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 22px;
+        font-size: 20px;
+        font-weight: 300;
+        color: #3b3b3b;
+        height: 60px;
+        line-height: 60px;
+        background: #ffffff;
+        cursor: pointer;
+        border-width: 2px 0 2px 0;
+        border-style: solid;
+        border-color: #394a6d;
+      }
+      .custom-options {
+        position: absolute;
+        display: block;
+        top: 100%;
+        left: 0;
+        right: 0;
+        border: 2px solid #394a6d;
+        border-top: 0;
+        background: #fff;
+        transition: all 0.5s;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        z-index: 2;
+      }
+      .custom-select.open .custom-options {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: all;
+      }
+      .custom-option {
+        position: relative;
+        display: block;
+        padding: 0 22px 0 22px;
+        font-size: 22px;
+        font-weight: 300;
+        color: #3b3b3b;
+        line-height: 60px;
+        cursor: pointer;
+        transition: all 0.5s;
+      }
+      .custom-option:hover {
+        cursor: pointer;
+        background-color: #b2b2b2;
+      }
+      .custom-option.selected {
+        color: #ffffff;
+        background-color: #305c91;
+      }
+      .arrow {
+        position: relative;
+        height: 15px;
+        width: 15px;
+      }
+      .arrow::before,
+      .arrow::after {
+        content: "";
+        position: absolute;
+        bottom: 0px;
+        width: 0.15rem;
+        height: 100%;
+        transition: all 0.5s;
+      }
+      .arrow::before {
+        left: -5px;
+        transform: rotate(45deg);
+        background-color: #394a6d;
+      }
+      .arrow::after {
+        left: 5px;
+        transform: rotate(-45deg);
+        background-color: #394a6d;
+      }
+      .open .arrow::before {
+        left: -5px;
+        transform: rotate(-45deg);
+      }
+      .open .arrow::after {
+        left: 5px;
+        transform: rotate(45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="main">
+      <section class="form">
+        <form action="/action_page.php">
+          <label for="fname">First Name</label>
+          <input
+            type="text"
+            id="fname"
+            name="firstname"
+            placeholder="Your name.."
+          />
+
+          <label for="lname">Last Name</label>
+          <input
+            type="text"
+            id="lname"
+            name="lastname"
+            placeholder="Your last name.."
+          />
+
+          <div class="custom-select-wrapper">
+            <div class="custom-select">
+              <div class="custom-select__trigger">
+                <span><i class="fas fa-home"></i> Home</span>
+              </div>
+              <div class="custom-options">
+                <span class="custom-option selected" data-value="tesla"
+                  ><i class="fas fa-home"></i>Tesla</span
+                >
+                <span class="custom-option" data-value="volvo">Volvo</span>
+                <span class="custom-option" data-value="mercedes"
+                  >Mercedes</span
+                >
+              </div>
+            </div>
+          </div>
+          <input type="submit" value="Submit" />
+        </form>
+      </section>
+    </main>
+    <script
+      src="https://kit.fontawesome.com/e89ce46a81.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/menu.js"></script>
+    <script>
+      document
+        .querySelector(".custom-select-wrapper")
+        .addEventListener("click", function () {
+          this.querySelector(".custom-select").classList.toggle("open");
+        });
+
+      for (const option of document.querySelectorAll(".custom-option")) {
+        option.addEventListener("click", function () {
+          if (!this.classList.contains("selected")) {
+            this.parentNode
+              .querySelector(".custom-option.selected")
+              .classList.remove("selected");
+            this.classList.add("selected");
+            this.closest(".custom-select").querySelector(
+              ".custom-select__trigger span"
+            ).textContent = this.textContent;
+          }
+        });
+      }
+      window.addEventListener("click", function (e) {
+        const select = document.querySelector(".custom-select");
+        if (!select.contains(e.target)) {
+          select.classList.remove("open");
+        }
+      });
+    </script>
+  </body>
+</html>
