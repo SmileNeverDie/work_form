@@ -10,215 +10,12 @@
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
       rel="stylesheet"
     />
-    <style>
-      main{
-        background-color: #f2f2f2;
-        justify-content: flex-start;
-        padding: 30px 50px;
-      }
 
-      input[type="text"],
-      select {
-        max-width: 100%;
-        width: 249px;
-        padding: 12px 0;
-        margin: 0 0;
-        display: inline-block;
-        border: none;
-        border-radius: 4px;
-        box-sizing: border-box;
-      }
-
-      input[type="submit"] {
-        max-width: 100%;
-        width: 570px;
-        background-color: orange;
-        color: white;
-        padding: 14px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 15px;
-      }
-
-      input[type="submit"]:hover {
-        background-color: #f09450;
-      }
-
-      div {
-        border-radius: 5px;
-        background-color: #f2f2f2;
-      }
-      .custom-select-wrapper {
-        /* position: relative; */
-        user-select: none;
-        justify-content: flex-start;
-        max-width: 100%;
-        width: 570px;
-        padding: 10px 0 0;
-      }
-      .custom-select {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        max-width: 100%;
-        padding: 10px 0;
-        /* border-width: 0 2px 0 2px; */
-        /* border-style: solid; */
-        /* border-color: #394a6d; */
-      }
-      .custom-select__trigger {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 10px;
-        font-size: 20px;
-        font-weight: 300;
-        color: #3b3b3b;
-        height: 60px;
-        line-height: 60px;
-        background: #ffffff;
-        cursor: pointer;
-      }
-      .custom-options {
-        position: absolute;
-        display: block;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #fff;
-        transition: all 0.5s;
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        z-index: 2;
-      }
-      .custom-select.open .custom-options {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: all;
-      }
-      .custom-option {
-        position: relative;
-        display: flex;
-        font-size: 22px;
-        font-weight: 300;
-        color: #3b3b3b;
-        line-height: 60px;
-        cursor: pointer;
-        transition: all 0.5s;
-        background-color: #fff;
-      }
-      .custom-option:hover {
-        cursor: pointer;
-        color: orange;
-      }
-
-      .select_label {
-        position: relative;
-        display: block;
-        font-size: 22px;
-        font-weight: 300;
-        color: #3b3b3b;
-        line-height: 60px;
-        cursor: pointer;
-        transition: all 0.5s;
-        background-color: #fff;
-
-      }
-      .select_label:hover {
-        cursor: pointer;
-        color: orange;
-      }
-
-      .custom-option.selected {
-        color: #ffffff;
-        background-color: #305c91;
-      }
-
-      .arrow {
-        position: relative;
-        height: 15px;
-        width: 15px;
-      }
-      .arrow::before,
-      .arrow::after {
-        content: "";
-        position: absolute;
-        bottom: 0px;
-        width: 0.15rem;
-        height: 100%;
-        transition: all 0.5s;
-      }
-      .arrow::before {
-        left: -5px;
-        transform: rotate(45deg);
-        background-color: #394a6d;
-      }
-      .arrow::after {
-        left: 5px;
-        transform: rotate(-45deg);
-        background-color: #394a6d;
-      }
-      .open .arrow::before {
-        left: -5px;
-        transform: rotate(-45deg);
-      }
-      .open .arrow::after {
-        left: 5px;
-        transform: rotate(45deg);
-      }
-
-      /*customer selection*/
-      .select_label {
-        margin: 15px;
-        color: #000;
-      }
-
-      /*location selection*/
-      .location-main {
-        display: flex;
-        padding: 10px 0 20px;
-      }
-
-      .loc_collection {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #fff;
-        border: .2px solid darkgrey;
-      }
-      .loc_delivery {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #fff;
-        border: .2px solid darkgrey;
-      }
-      .point_1 {
-        color: #4caf50;
-        max-width: 100%;
-        padding: 10px;
-      }
-      .point_2 {
-        color: red;
-        max-width: 100%;
-        padding: 10px;
-      }
-      /*submit selection*/
-      .submit_selection {
-
-      }
-
-    </style>
   </head>
   <body>
     <main class="main">
       <section class="form">
-        <form method="post" action="php/action.php">
+        <form action="action.php" method="POST">
           <!-- CUSTOM SELECTION-->
           <div class="custom-select-wrapper">
             <div class="custom-select">
@@ -226,56 +23,33 @@
                 <span><i class="fas fa-home select_label"></i>Home</span>
                 <span><i class="fas fa-caret-down"></i></span>
               </div>
-              <div class="custom-options">
-                <div class="custom-option">
-                  <span data-value="furniture_and_general_items"
-                  ><i class="fas fa-bed select_label"></i>Furniture & General Items</span>
-                </div>
-                <div>
-                  <span class="custom-option" data-value="boxes"
-                  ><i class="fas fa-archive select_label"></i>Boxes</span>
-                </div>
-                <div>
-                  <span class="custom-option" data-value="cars"
-                  ><i class="fas fa-car select_label"></i>Cars</span>
-                </div>
-                <div>
-                  <span class="custom-option" data-value="motorcycles"
-                  ><i class="fas fa-motorcycle select_label"></i>Motorcycle</span>
-                </div>
-                <div>
-                  <span class="custom-option" data-value="other_vehicles"
-                  ><i class="fas fa-bus select_label"></i>Other Vehicle</span>
-                </div>
-                <div>
-                  <span class="custom-option" data-value="moving_home"
-                  ><i class="fas fa-home select_label"></i>Moving Home</span>
-                </div>
-                <div>
-                  <span class="custom-option" data-value="haulage"
-                  ><i class="fas fa-truck select_label"></i>Haulage</span
-                  >
-                </div>
-                <div>
-                  <span class="custom-option" data-value="boats"
-                  ><i class="fas fa-ship select_label"></i>Boats</span>
-                </div>
-                <div>
-                  <span class="custom-option" data-value="vehicle_parts"
-                  ><i class="fas fa-cogs select_label"></i>Vehicle Parts</span>
-                </div>
-                <div>
-                  <span class="custom-option" data-value="pianos"
-                  ><i class="fas fa-music select_label"></i>Pianos</span>
-                </div>
-                <div>
-                  <span class="custom-option" data-value="pets_livestock"
-                  ><i class="fas fa-paw select_label"></i>Pets & Livestock</span>
-                </div>
-                <div>
-                  <span class="custom-option" data-value="other"
-                  ><i class="fas fa-cog select_label"></i>Other</span>
-                </div>
+              <div class="custom-options" name="cus-options">
+                <span class="custom-option selected" data-value="furniture_and_general_items">
+                  <i class="fas fa-bed select_label selected"></i>Furniture & General Items</span>
+                </span>
+                <span class="custom-option" data-value="boxes">
+                  <i class="fas fa-archive select_label"></i>Boxes</span>
+                <span class="custom-option" data-value="cars">
+                  <i class="fas fa-car select_label"></i>Cars</span>
+                <span class="custom-option" data-value="motorcycles">
+                  <i class="fas fa-motorcycle select_label"></i>Motorcycle</span>
+                <span class="custom-option" data-value="other_vehicles">
+                  <i class="fas fa-bus select_label"></i>Other Vehicle</span>
+                <span class="custom-option" data-value="moving_home">
+                  <i class="fas fa-home select_label"></i>Moving Home</span>
+                <span class="custom-option" data-value="haulage">
+                  <i class="fas fa-truck select_label"></i>Haulage</span>
+                <span class="custom-option" data-value="boats">
+                  <i class="fas fa-ship select_label"></i>Boats</span>
+                <span class="custom-option" data-value="vehicle_parts">
+                  <i class="fas fa-cogs select_label"></i>Vehicle Parts</span>
+                <span class="custom-option" data-value="pianos">
+                  <i class="fas fa-music select_label"></i>Pianos</span>
+                <span class="custom-option" data-value="pets_livestock">
+                  <i class="fas fa-paw select_label"></i>Pets & Livestock</span>
+                <span class="custom-option" data-value="other">
+                  <i class="fas fa-cog select_label"></i>Other</span>
+
               </div>
             </div>
           </div>
@@ -285,7 +59,7 @@
               <div class="loc_collection">
                 <span>
                   <i class="fas fa-map-marker-alt point_1"></i>
-                  <input type="text" placeholder="Collection Location">
+                  <input type="text" name="collection_location" placeholder="Collection Location">
                 </span>
               </div>
                 <!--
@@ -299,7 +73,7 @@
               </div>
               <div class="loc_delivery">
                 <i class="fas fa-map-marker-alt point_2"></i>
-                <input type="text" placeholder="Delivery Location">
+                <input type="text" name="delivery_location" placeholder="Delivery Location">
               </div>
             </div>
           <!-- SUBMIT SELECTION-->
@@ -311,60 +85,32 @@
     </main>
     <!-- FOR CUSTOM-->
     <script
-      src="https://kit.fontawesome.com/e89ce46a81.js"
-      crossorigin="anonymous"
+            src="https://kit.fontawesome.com/e89ce46a81.js"
+            crossorigin="anonymous"
     ></script>
     <script src="./js/menu.js"></script>
     <script>
       document
-        .querySelector(".custom-select-wrapper")
-        .addEventListener("click", function () {
-          this.querySelector(".custom-select").classList.toggle("open");
-        });
+              .querySelector(".custom-select-wrapper")
+              .addEventListener("click", function () {
+                this.querySelector(".custom-select").classList.toggle("open");
+              });
 
       for (const option of document.querySelectorAll(".custom-option")) {
         option.addEventListener("click", function () {
           if (!this.classList.contains("selected")) {
             this.parentNode
-              .querySelector(".custom-option.selected")
-              .classList.remove("selected");
+                    .querySelector(".custom-option.selected")
+                    .classList.remove("selected");
             this.classList.add("selected");
             this.closest(".custom-select").querySelector(
-              ".custom-select__trigger span"
+                    ".custom-select__trigger span"
             ).textContent = this.textContent;
           }
         });
       }
       window.addEventListener("click", function (e) {
         const select = document.querySelector(".custom-select");
-        if (!select.contains(e.target)) {
-          select.classList.remove("open");
-        }
-      });
-    </script>
-    <!-- FOR LOCATION -->
-    <script>
-      document
-              .querySelector(".location-select-wrapper")
-              .addEventListener("click", function () {
-                this.querySelector(".location-select").classList.toggle("open");
-              });
-
-      for (const option of document.querySelectorAll(".loc-option")) {
-        option.addEventListener("click", function () {
-          if (!this.classList.contains("selected")) {
-            this.parentNode
-                    .querySelector(".loc-option.selected")
-                    .classList.remove("selected");
-            this.classList.add("selected");
-            this.closest(".custom-select").querySelector(
-                    ".loc-collection__trigger span"
-            ).textContent = this.textContent;
-          }
-        });
-      }
-      window.addEventListener("click", function (e) {
-        const select = document.querySelector(".location-select");
         if (!select.contains(e.target)) {
           select.classList.remove("open");
         }
